@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aimem"
+version = "0.1.0"
+description = "Provider-independent memory + project-context MCP server (Markdown/JSONL in git, SQLite FTS5 + vectors index)"
+requires-python = ">=3.10"
+dependencies = ["mcp>=1.2", "numpy>=1.24", "pyyaml>=6"]
+
+[project.optional-dependencies]
+semantic = ["fastembed>=0.3"]   # real semantic embeddings (local ONNX); run `aimem warmup` once
+
+[project.scripts]
+aimem = "aimem.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

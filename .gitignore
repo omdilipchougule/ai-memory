@@ -1,0 +1,15 @@
+# derived / local only. Never commit these.
+.index/
+.lock/
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+*.aimem.bak
+# credentials and local config
+.env
+.env.*
+*.pem
+*.key
+**/secrets*
+**/credentials*

@@ -1,0 +1,5 @@
+# One memory per line => keep both sides when two machines append/edit different lines.
+memory/**/*.md merge=union
+memory/**/*.jsonl merge=union
+# Curated summaries are prose: use a normal text merge; real conflicts are handled by `aimem sync`
+memory/projects/*/context.md merge=text

@@ -1,0 +1,8 @@
+name: project-ecg
+description: ECG project (code graph indexed in Graphify)
+aliases:
+- ecg
+repo: omdilipchougule/Project_ecg
+graphify:
+  repo: omdilipchougule/Project_ecg
+  repository_id: 624d16fe-73a6-4300-b859-44930ce1d07b
