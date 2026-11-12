@@ -117,7 +117,32 @@ def init_project(name: str, description: str = "", repo: str = "", graphify_repo
 
 
 def main() -> None:
-    mcp.run()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Central MCP memory server")
+    parser.add_argument(
+        "--transport",
+        choices=["stdio", "sse", "streamable-http"],
+        default=os.environ.get("AIMEM_TRANSPORT", "stdio"),
+        help="Transport to use (stdio, sse, or streamable-http). Defaults to stdio.",
+    )
+    parser.add_argument(
+        "--host",
+        default=os.environ.get("AIMEM_HOST", "127.0.0.1"),
+        help="Host address to bind to when running HTTP/SSE (default: 127.0.0.1).",
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=int(os.environ.get("AIMEM_PORT", "8000")),
+        help="Port to listen on when running HTTP/SSE (default: 8000).",
+    )
+    args = parser.parse_args()
+
+    if args.transport == "stdio":
+        mcp.run(transport="stdio")
+    else:
+        mcp.run(transport=args.transport, host=args.host, port=args.port)
 
 
 if __name__ == "__main__":
